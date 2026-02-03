@@ -148,37 +148,34 @@
   <!-- JavaScript -->
   <script>
     function showChoices() {
-      document.getElementById("askBtn").style.display = "none";
-      document.getElementById("choices").style.display = "flex";
-    }
+  document.getElementById("askBtn").style.display = "none";
+  document.getElementById("choices").style.display = "flex";
+}
 
-    function showLove() {
+function showLove() {
   document.getElementById("answer").style.display = "block";
   document.getElementById("choices").style.display = "none";
   createHearts();
-    }
+}
 
-    function noClicked(btn) {
-      btn.innerHTML = "Yes 💖";
-      btn.classList.remove("no");
-      btn.classList.add("yes");
-      btn.onclick = showLove;
-    }
+function noClicked(btn) {
+  btn.innerHTML = "Yes 💖";
+  btn.classList.remove("no");
+  btn.classList.add("yes");
+  btn.onclick = showLove;
+}
 
-    function createHearts() {
-      const heartsContainer = document.getElementById("hearts");
-      for (let i = 0; i < 20; i++) {
-        const heart = document.createElement("div");
-        heart.classList.add("heart");
-        heart.style.left = Math.random() * 90 + "%";
-        heart.style.animationDuration = 2 + Math.random() * 2 + "s";
-        heartsContainer.appendChild(heart);
-        setTimeout(() => heart.remove(), 4000);
-      }
-    }
+function createHearts() {
+  const heartsContainer = document.getElementById("hearts");
+  for (let i = 0; i < 20; i++) {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.style.left = Math.random() * 90 + "%";
+    heart.style.animationDuration = 2 + Math.random() * 2 + "s";
+    heartsContainer.appendChild(heart);
+    setTimeout(() => heart.remove(), 4000);
+  }
+}
   </script>
-<audio id="bgMusic">
-  <source src="images/love.mp3" type="audio/mpeg">
-</audio> 
 </body>
 </html>
