@@ -153,9 +153,13 @@
     }
 
     function showLove() {
-      document.getElementById("answer").style.display = "block";
-      document.getElementById("choices").style.display = "none";
-      createHearts();
+  document.getElementById("answer").style.display = "block";
+  document.getElementById("choices").style.display = "none";
+  createHearts();
+
+  // play romantic music
+  document.getElementById("bgMusic").play();
+    }
     }
 
     function noClicked(btn) {
