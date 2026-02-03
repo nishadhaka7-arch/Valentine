@@ -94,26 +94,23 @@ button:hover {
     <img src="images/photo2.jpg">
     <img src="images/photo3.jpg">
   </div> 
-
+<body>
   <h1>Will you be my Valentine? 💘</h1>
+  <button id="askBtn" onclick="showChoices()">Click here 💝</button>
 
-<button id="askBtn" onclick="showChoices()">Click here 💝</button>
-
-<div class="choice-buttons" id="choices" style="display:none;">
-  <button class="yes" onclick="showLove()">Yes 💖</button>
-  <button class="no" onclick="noClicked(this)">No 🙈</button>
-</div>
-
-<p id="answer" style="display:none;">
-  Yayyy 🥹💖 I knew it!  
-  You make my world brighter every day.
-</p>
-  <div id="hearts"></div> 
-
-  <div id="answer">
-    Always yours ❤️  
-    Happy Valentine’s Day 💕
+  <div class="choice-buttons" id="choices" style="display:none;">
+    <button class="yes" onclick="showLove()">Yes 💖</button>
+    <button class="no" onclick="noClicked(this)">No 🙈</button>
   </div>
+
+  <p id="answer" style="display:none;">
+    Hey Omendra 🥹💖 I knew it!  
+    You make my world brighter every day.
+  </p>
+
+  <!-- Hearts placeholder -->
+  <div id="hearts"></div>
+</body> 
 
   <script>
 function showChoices() {
