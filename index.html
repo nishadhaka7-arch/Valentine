@@ -1,149 +1,181 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My Valentine ❤️</title>
+  <title>My Valentine 💖</title>
   <style>
+    /* General Page Styling */
     body {
-      background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
-      font-family: Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
       text-align: center;
-      padding: 20px;
-      color: #5a0f2e;
+      background-color: #ffe6f0;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
     }
+
     h1 {
-      font-size: 36px;
+      color: #ff4d6d;
+      margin-top: 30px;
+      font-size: 40px;
     }
-    .message {
-      background: white;
-      padding: 20px;
-      border-radius: 20px;
-      margin: 20px 0;
-      font-size: 18px;
-    }
-    img {
-      width: 90%;
-      max-width: 300px;
-      border-radius: 20px;
-      margin: 10px 0;
-    }
-    button {
-  background: linear-gradient(45deg, #ff4d6d, #ff85a2);
-  color: white;
-  border: none;
-  padding: 15px 30px;
-  font-size: 20px;
-  border-radius: 50px;
-  cursor: pointer;
-  margin-top: 25px;
-  animation: heartbeat 1.5s infinite;
-  box-shadow: 0 8px 20px rgba(255, 77, 109, 0.4);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
 
-button:hover {
-  transform: scale(1.1);
-  box-shadow: 0 12px 25px rgba(255, 77, 109, 0.7);
-}
-    .choice-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 25px;
-}
-
-.yes {
-  background: linear-gradient(45deg, #ff4d6d, #ff85a2);
-}
-
-.no {
-  background: #aaa;
-}
-
-@keyframes heartbeat {
-  0% { transform: scale(1); }
-  25% { transform: scale(1.08); }
-  50% { transform: scale(1); }
-  75% { transform: scale(1.08); }
-  100% { transform: scale(1); }
-}
-      
-    }
-    #answer {
-      display: none;
+    p {
       font-size: 22px;
-      margin-top: 20px;
+      color: #ff4d6d;
+      margin: 20px 10px;
     }
+
+    /* Buttons */
+    button {
+      padding: 15px 30px;
+      font-size: 20px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 12px 25px rgba(255, 77, 109, 0.7);
+    }
+
+    .choice-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 25px;
+    }
+
+    .yes {
+      background: linear-gradient(45deg, #ff4d6d, #ff85a2);
+      color: white;
+    }
+
+    .no {
+      background: #aaa;
+      color: white;
+    }
+
+    /* Images Styling */
+    .valentine-img {
+      width: 300px;
+      max-width: 80%;
+      margin: 20px auto;
+      border-radius: 15px;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: fadeInUp 1s forwards;
+    }
+
+    .valentine-img:nth-child(1) { animation-delay: 0.2s; }
+    .valentine-img:nth-child(2) { animation-delay: 0.5s; }
+    .valentine-img:nth-child(3) { animation-delay: 0.8s; }
+    .valentine-img:nth-child(4) { animation-delay: 1.1s; }
+
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Hearts floating */
+    #hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 9999;
+    }
+
+    .heart {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background: red;
+      transform: rotate(45deg);
+      animation: float 2s linear forwards;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before { top: -15px; left: 0; }
+    .heart::after { left: 15px; top: 0; }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(45deg); opacity: 1; }
+      100% { transform: translateY(-300px) rotate(45deg); opacity: 0; }
+    }
+
   </style>
 </head>
-
 <body>
 
-  <h1>Hey Omendra urf Ayush urf my jaanu/bachaaa 😘🤭🤭</h1>
-
-  <div class="message">
-    My favourite person 😍💕✨
-    Thank you for being my happy thoughts, my calm in chaos
-    every moment with you fells special, warmer and happier.🤭💖💖
-    With you I feel safe, understood,and loved✨🥰🥰💕
-    Everyday with you is like being on the seventh heaven✨✨🌕💞 
-    Ummmmaaahhhhhh💋💋💋💞💕💞💓
-     
-  </div>
-  <div class="gallery">
-    <img src="images/photo1.jpg">
-    <img src="images/photo2.jpg">
-    <img src="images/photo3.jpg">
-  </div> 
-<body>
+  <!-- Header -->
   <h1>Will you be my Valentine? 💘</h1>
+
+  <!-- First button -->
   <button id="askBtn" onclick="showChoices()">Click here 💝</button>
 
+  <!-- YES / NO buttons hidden initially -->
   <div class="choice-buttons" id="choices" style="display:none;">
     <button class="yes" onclick="showLove()">Yes 💖</button>
     <button class="no" onclick="noClicked(this)">No 🙈</button>
   </div>
 
+  <!-- Valentine Message hidden initially -->
   <p id="answer" style="display:none;">
-    Hey Omendra 🥹💖 I knew it!  
-    You make my world brighter every day.
+  To my favourite person 🥰Thank you for being my happy thought,  
+my calm in chaos.Being with you I feel safe, understood, and loved and my reason to smile for no reason 💕you make every day brighter for me.  
+  I love you so much and I want to be your Valentine forever. 💖🌹
   </p>
 
-  <!-- Hearts placeholder -->
+  <!-- Images -->
+  <img src="Photo1.jpg" alt="Valentine 1" class="valentine-img">
+  <img src="Photo2.jpg" alt="Valentine 2" class="valentine-img">
+  <img src="Photo3.jpg" alt="Valentine 3" class="valentine-img">
+  <img src="Photo4.jpg" alt="Valentine 4" class="valentine-img">
+
+  <!-- Hearts Placeholder -->
   <div id="hearts"></div>
-</body> 
 
+  <!-- JavaScript -->
   <script>
-function showChoices() {
-  // Hide the first button
-  document.getElementById("askBtn").style.display = "none";
-  // Show the Yes/No buttons
-  document.getElementById("choices").style.display = "flex";
-}
+    function showChoices() {
+      document.getElementById("askBtn").style.display = "none";
+      document.getElementById("choices").style.display = "flex";
+    }
 
-function showLove() {
-  // Show the love message
-  document.getElementById("answer").style.display = "block";
-  // Hide the Yes/No buttons
-  document.getElementById("choices").style.display = "none";
-}
+    function showLove() {
+      document.getElementById("answer").style.display = "block";
+      document.getElementById("choices").style.display = "none";
+      createHearts();
+    }
 
-function noClicked(btn) {
-  // NO button betrays him
-  btn.innerHTML = "Yes 💖";
-  btn.classList.remove("no");
-  btn.classList.add("yes");
-  btn.onclick = showLove;
-}
+    function noClicked(btn) {
+      btn.innerHTML = "Yes 💖";
+      btn.classList.remove("no");
+      btn.classList.add("yes");
+      btn.onclick = showLove;
+    }
+
     function createHearts() {
       const heartsContainer = document.getElementById("hearts");
-
       for (let i = 0; i < 20; i++) {
         const heart = document.createElement("div");
         heart.classList.add("heart");
         heart.style.left = Math.random() * 90 + "%";
         heart.style.animationDuration = 2 + Math.random() * 2 + "s";
         heartsContainer.appendChild(heart);
-
         setTimeout(() => heart.remove(), 4000);
       }
     }
