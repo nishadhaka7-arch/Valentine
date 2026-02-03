@@ -81,10 +81,19 @@ button:hover {
     <img src="images/photo3.jpg">
   </div> 
 
-  <div class="choice-buttons">
+  <h1>Will you be my Valentine? 💘</h1>
+
+<button id="askBtn" onclick="showChoices()">Click here 💝</button>
+
+<div class="choice-buttons" id="choices" style="display:none;">
   <button class="yes" onclick="showLove()">Yes 💖</button>
   <button class="no" onclick="noClicked(this)">No 🙈</button>
-  </div>
+</div>
+
+<p id="answer" style="display:none;">
+  Yayyy 🥹💖 I knew it!  
+  You make my world brighter every day.
+</p>
 
   <div id="answer">
     Always yours ❤️  
