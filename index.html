@@ -90,7 +90,10 @@ button:hover {
 
   <script>
     function showLove() {
-      document.getElementById("answer").style.display = "block";
+      function showLove(event) {
+  document.getElementById("answer").style.display = "block";
+  event.target.innerHTML = "Yay! 💖🥹";
+  event.target.style.animation = "none";
     }
   </script>
 
