@@ -114,12 +114,28 @@ button:hover {
     Happy Valentine’s Day 💕
   </div>
 
-  <script> 
-      function showLove(event) {
+  <script>
+function showChoices() {
+  // Hide the first button
+  document.getElementById("askBtn").style.display = "none";
+  // Show the Yes/No buttons
+  document.getElementById("choices").style.display = "flex";
+}
+
+function showLove() {
+  // Show the love message
   document.getElementById("answer").style.display = "block";
-  event.target.innerHTML = "Yay! 💖🥹";
-  event.target.style.animation = "none";
-    }
+  // Hide the Yes/No buttons
+  document.getElementById("choices").style.display = "none";
+}
+
+function noClicked(btn) {
+  // NO button betrays him
+  btn.innerHTML = "Yes 💖";
+  btn.classList.remove("no");
+  btn.classList.add("yes");
+  btn.onclick = showLove;
+}
   </script>
 
 </body>
