@@ -14,14 +14,16 @@ body {
   overflow-x: hidden;
 }
 
+/* Heading */
 h1 {
   color: #ff4d6d;
   margin-top: 40px;
   font-size: 38px;
 }
 
+/* Buttons */
 button {
-  padding: 15px 30px;
+  padding: 15px 32px;
   font-size: 20px;
   border-radius: 50px;
   border: none;
@@ -44,20 +46,24 @@ button {
   margin-top: 30px;
 }
 
+/* Message */
 p {
   display: none;
   font-size: 22px;
   color: #ff4d6d;
-  margin: 20px;
+  margin: 25px;
+  line-height: 1.5;
 }
 
-/* IMAGES */
+/* Images styling */
 .valentine-img {
   width: 280px;
   max-width: 80%;
-  margin: 15px auto;
-  border-radius: 15px;
+  margin: 35px auto;                 /* spacing */
+  border-radius: 18px;               /* soft corners */
   opacity: 0;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.18); /* soft shadow */
+  background: white;
 }
 
 /* Floating animations */
@@ -72,21 +78,21 @@ p {
 }
 
 @keyframes fromLeft {
-  from { transform: translateX(-300px) scale(0.5); opacity: 0; }
-  to { transform: translateX(0) scale(1); opacity: 1; }
+  from { transform: translateX(-300px) scale(0.6); opacity: 0; }
+  to   { transform: translateX(0) scale(1); opacity: 1; }
 }
 
 @keyframes fromBottom {
-  from { transform: translateY(300px) scale(0.5); opacity: 0; }
-  to { transform: translateY(0) scale(1); opacity: 1; }
+  from { transform: translateY(300px) scale(0.6); opacity: 0; }
+  to   { transform: translateY(0) scale(1); opacity: 1; }
 }
 
 @keyframes fromRight {
-  from { transform: translateX(300px) scale(0.5); opacity: 0; }
-  to { transform: translateX(0) scale(1); opacity: 1; }
+  from { transform: translateX(300px) scale(0.6); opacity: 0; }
+  to   { transform: translateX(0) scale(1); opacity: 1; }
 }
 
-/* HEARTS */
+/* Hearts */
 #hearts {
   position: fixed;
   inset: 0;
@@ -114,11 +120,11 @@ p {
 }
 
 .heart::before { top: -10px; left: 0; }
-.heart::after { left: 10px; top: 0; }
+.heart::after  { left: 10px; top: 0; }
 
 @keyframes floatUp {
   from { opacity: 1; transform: translateY(0) rotate(45deg); }
-  to { opacity: 0; transform: translateY(-500px) rotate(45deg); }
+  to   { opacity: 0; transform: translateY(-500px) rotate(45deg); }
 }
 </style>
 </head>
@@ -136,12 +142,8 @@ p {
 
 <p id="message">
   💕 To my favourite person 💕<br><br>
-  <!-- WRITE YOUR MESSAGE BELOW -->
-  You have a beautiful way of making my world feel calmer, warmer, and happier.
-  In your love, I’ve found comfort, laughter, and a quiet strength I didn’t even know I needed.
-  Thank you for being my favorite person and my safest place ✨⭐🌟 🤗💖
-  Always yours😘💋
-  Nisha your bachaa😘❤️
+  I love you for the way you make me feel — happy, safe, and understood ❤️  
+  Every moment with you is special, and I feel blessed to call you mine.
 </p>
 
 <img src="images/photo1.jpg" class="valentine-img" id="img1">
@@ -190,6 +192,7 @@ function startHearts() {
     heart.style.left = Math.random() * 100 + "%";
     heart.style.bottom = "0";
     container.appendChild(heart);
+
     setTimeout(() => heart.remove(), 4000);
   }, 300);
 }
