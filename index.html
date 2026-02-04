@@ -1,177 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>My Valentine 💖</title>
+<meta charset="UTF-8">
+<title>My Valentine 💖</title>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background-color: #ffe6f0;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-    }
+<style>
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #ffe6f0;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
 
-    h1 {
-      color: #ff4d6d;
-      margin-top: 40px;
-      font-size: 38px;
-    }
+h1 {
+  color: #ff4d6d;
+  margin-top: 40px;
+  font-size: 38px;
+}
 
-    p {
-      font-size: 22px;
-      color: #ff4d6d;
-      margin: 20px;
-      display: none;
-    }
+button {
+  padding: 15px 30px;
+  font-size: 20px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  margin: 10px;
+}
 
-    button {
-      padding: 15px 30px;
-      font-size: 20px;
-      border-radius: 50px;
-      border: none;
-      cursor: pointer;
-      margin: 10px;
-    }
+.yes {
+  background: #ff4d6d;
+  color: white;
+}
 
-    .yes {
-      background: #ff4d6d;
-      color: white;
-    }
+.no {
+  background: #aaa;
+  color: white;
+}
 
-    .no {
-      background: #aaa;
-      color: white;
-    }
+#choices {
+  display: none;
+  margin-top: 30px;
+}
 
-    #choices {
-      display: none;
-      margin-top: 30px;
-    }
+p {
+  display: none;
+  font-size: 22px;
+  color: #ff4d6d;
+  margin: 20px;
+}
 
-    /* Images hidden initially */
-    .valentine-img {
-      display: none;
-      width: 280px;
-      max-width: 80%;
-      margin: 15px auto;
-      border-radius: 15px;
-    }
+/* IMAGES */
+.valentine-img {
+  width: 280px;
+  max-width: 80%;
+  margin: 15px auto;
+  border-radius: 15px;
+  opacity: 0;
+}
 
-    /* Hearts */
-    #hearts {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 999;
-    }
+/* Floating animations */
+.fly-left {
+  animation: fromLeft 2s ease forwards;
+}
+.fly-bottom {
+  animation: fromBottom 2.5s ease forwards;
+}
+.fly-right {
+  animation: fromRight 3s ease forwards;
+}
 
-    .heart {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: red;
-      transform: rotate(45deg);
-      animation: floatUp 4s linear forwards;
-    }
+@keyframes fromLeft {
+  from { transform: translateX(-300px) scale(0.5); opacity: 0; }
+  to { transform: translateX(0) scale(1); opacity: 1; }
+}
 
-    .heart::before,
-    .heart::after {
-      content: "";
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: red;
-      border-radius: 50%;
-    }
+@keyframes fromBottom {
+  from { transform: translateY(300px) scale(0.5); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
 
-    .heart::before {
-      top: -10px;
-      left: 0;
-    }
+@keyframes fromRight {
+  from { transform: translateX(300px) scale(0.5); opacity: 0; }
+  to { transform: translateX(0) scale(1); opacity: 1; }
+}
 
-    .heart::after {
-      left: 10px;
-      top: 0;
-    }
+/* HEARTS */
+#hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+}
 
-    @keyframes floatUp {
-      0% { opacity: 1; transform: translateY(0) rotate(45deg); }
-      100% { opacity: 0; transform: translateY(-500px) rotate(45deg); }
-    }
-  </style>
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: red;
+  transform: rotate(45deg);
+  animation: floatUp 4s linear forwards;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: red;
+  border-radius: 50%;
+}
+
+.heart::before { top: -10px; left: 0; }
+.heart::after { left: 10px; top: 0; }
+
+@keyframes floatUp {
+  from { opacity: 1; transform: translateY(0) rotate(45deg); }
+  to { opacity: 0; transform: translateY(-500px) rotate(45deg); }
+}
+</style>
 </head>
 
 <body>
 
-  <h1>Will you be my Valentine? 💘</h1>
+<h1>Will you be my Valentine? 💘</h1>
 
-  <button id="startBtn" class="yes" onclick="showChoices()">Click here 💝</button>
+<button id="startBtn" class="yes" onclick="showChoices()">Click here 💝</button>
 
-  <div id="choices">
-    <button class="yes" onclick="showLove()">Yes 💖</button>
-    <button class="no" onclick="forceYes(this)">No 🙈</button>
-  </div>
+<div id="choices">
+  <button class="yes" onclick="showLove()">Yes 💖</button>
+  <button class="no" onclick="forceYes(this)">No 🙈</button>
+</div>
 
-  <p id="message">
-    💕 To my favourite person 💕<br><br>
-    (You have a beautiful way of making my world feel calmer, warmer, and happier.
-     In your love, I’ve found comfort, laughter, and a quiet strength I didn’t even know I needed.
-     Thank you for being my favorite person and my safest place.
-     Always yours,
-     Nisha ❤️❤️)
-  </p>
+<p id="message">
+  💕 To my favourite person 💕<br><br>
+  <!-- WRITE YOUR MESSAGE BELOW -->
+  I love you for the way you make me feel — safe, happy, and understood ❤️
+</p>
 
-  <img src="images/photo1.jpg" class="valentine-img">
-  <img src="images/photo2.jpg" class="valentine-img">
-  <img src="images/photo3.jpg" class="valentine-img">
+<img src="images/photo1.jpg" class="valentine-img" id="img1">
+<img src="images/photo2.jpg" class="valentine-img" id="img2">
+<img src="images/photo3.jpg" class="valentine-img" id="img3">
 
-  <div id="hearts"></div>
+<div id="hearts"></div>
 
-  <audio id="music">
-    <source src="images/love.mp3" type="audio/mpeg">
-  </audio>
+<audio id="music">
+  <source src="images/love.mp3" type="audio/mpeg">
+</audio>
 
-  <script>
-    function showChoices() {
-      document.getElementById("startBtn").style.display = "none";
-      document.getElementById("choices").style.display = "block";
-    }
+<script>
+function showChoices() {
+  document.getElementById("startBtn").style.display = "none";
+  document.getElementById("choices").style.display = "block";
+}
 
-    function showLove() {
-      document.getElementById("choices").style.display = "none";
-      document.getElementById("message").style.display = "block";
+function forceYes(btn) {
+  btn.innerText = "Yes 💖";
+  btn.className = "yes";
+  btn.onclick = showLove;
+}
 
-      document.querySelectorAll(".valentine-img").forEach(img => {
-        img.style.display = "block";
-      });
+function showLove() {
+  document.getElementById("choices").style.display = "none";
+  document.getElementById("message").style.display = "block";
 
-      document.getElementById("music").play();
-      startHearts();
-    }
+  document.getElementById("img1").classList.add("fly-left");
+  document.getElementById("img2").classList.add("fly-bottom");
+  document.getElementById("img3").classList.add("fly-right");
 
-    function forceYes(btn) {
-      btn.innerText = "Yes 💖";
-      btn.className = "yes";
-      btn.onclick = showLove;
-    }
+  const music = document.getElementById("music");
+  music.volume = 0.3;   // soft romantic volume
+  music.play();
 
-    function startHearts() {
-      const container = document.getElementById("hearts");
+  startHearts();
+}
 
-      setInterval(() => {
-        const heart = document.createElement("div");
-        heart.className = "heart";
-        heart.style.left = Math.random() * 100 + "%";
-        heart.style.bottom = "0";
-        container.appendChild(heart);
+function startHearts() {
+  const container = document.getElementById("hearts");
 
-        setTimeout(() => heart.remove(), 4000);
-      }, 300);
-    }
-  </script>
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.style.left = Math.random() * 100 + "%";
+    heart.style.bottom = "0";
+    container.appendChild(heart);
+    setTimeout(() => heart.remove(), 4000);
+  }, 300);
+}
+</script>
 
 </body>
 </html>
